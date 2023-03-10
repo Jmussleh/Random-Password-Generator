@@ -10,6 +10,10 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var Characters = window.prompt("How many characters would you like your password to contain? Choose between 8 and 128.");
+  if (isNaN(Characters) || Characters < 8 || Characters > 128) {
+    alert("Please enter a valid password length between 8 and 128 characters.");
+    return "";
+  }
   var SpecialC = window.confirm("Click OK to confirm including special characters. ")
   var Numbers = window.confirm("Click OK to confirm including numeric characters. ")
   var Lowercase = window.confirm("Click OK to confirm including lowercase characters. ")
@@ -18,21 +22,25 @@ function writePassword() {
     alert("Please select at least one character set to include in your password.");
     return "";
   }
-  var passwordChars = "";
+  var passwordC = "";
   if (Lowercase) {
-    passwordChars += LowercaseC;
+    passwordC += LowercaseC;
   }
   if (Uppercase) {
-    passwordChars += UppercaseC;
+    passwordC += UppercaseC;
   }
   if (Numbers) {
-    passwordChars += NumbersC;
+    passwordC += NumbersC;
   }
   if (SpecialC) {
-    passwordChars += SpecialCC;
+    passwordC += SpecialCC;
   }
 
-  var password = generatePassword();
+  var password = "";
+  for (var i = 0; i < Characters; i++) {
+    password += passwordC.charAt(Math.floor(Math.random() * passwordC.length));
+  }
+  //var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password; }
 
