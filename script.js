@@ -1,8 +1,8 @@
 // Assignment code here
-var SpecialC = "!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".split('');
-var Numbers = "0123456789".split('');
-var Lowercase = "abcdefghijklmnopqrstuvwxyz".split('');
-var Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+var SpecialCC = "!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".split('');
+var NumbersC = "0123456789".split('');
+var LowercaseC = "abcdefghijklmnopqrstuvwxyz".split('');
+var UppercaseC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -18,6 +18,20 @@ function writePassword() {
     alert("Please select at least one character set to include in your password.");
     return "";
   }
+  var passwordChars = "";
+  if (Lowercase) {
+    passwordChars += LowercaseC;
+  }
+  if (Uppercase) {
+    passwordChars += UppercaseC;
+  }
+  if (Numbers) {
+    passwordChars += NumbersC;
+  }
+  if (SpecialC) {
+    passwordChars += SpecialCC;
+  }
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password; }
